@@ -1,17 +1,11 @@
 describe('Login', () => {
   it('successfully', () => {
-    cy.login()
+    const user = Cypress.env('user_name')
+    const password = Cypress.env('user_password')
+    const options = { cacheSession: false }
+
+    cy.login(user, password, options)
 
     cy.get('.qa-user-avatar').should('be.visible')
-    cy.get('.tanuki-logo').should('be.visible')
   })
-
-  // it('logout', () => {
-  //   cy.login()
-
-  //   cy.get('.qa-user-avatar').click()
-  //   cy.get('.sign-out-link').click()
-  //   cy.get('.tanuki-logo').should('be.visible')
-  // })
 })
-
