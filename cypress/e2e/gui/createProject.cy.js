@@ -1,11 +1,13 @@
 import { faker } from '@faker-js/faker'
 
+const options = { env: { snapshotOnly: true } }
+
 describe('Project', () => {
     beforeEach(() => {
         cy.api_deleteProjects()
         cy.login()
     });
-    it('successfuly', () => {
+    it('successfuly', options , () => {
         const project = {
             name: `project-${faker.datatype.uuid()}`,
             description: faker.random.words(5)
